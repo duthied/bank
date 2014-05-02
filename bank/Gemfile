@@ -33,3 +33,4 @@ group :doc do
 end
 
 gem 'thin', '~> 1.6.0'
+gem 'activeadmin', github: 'gregbell/active_admin'
