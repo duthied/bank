@@ -1,7 +1,5 @@
 ActiveAdmin.register User do
 
-  menu parent: 'Users', priority: 1, label: 'User Listing'
-
   filter :card_number
   filter :pin
 
@@ -23,6 +21,17 @@ ActiveAdmin.register User do
       row :pin
       row :created_at
       row :updated_at
+
+      row 'Accounts' do
+        table_for @user.accounts do
+          column '' do |account|
+            p link_to "#{account.title} balance: #{number_to_currency(account.balance, :unit => "$")}", 
+              admin_account_path(account), 
+              :target => '_blank'
+          end
+        end
+      end
+
     end
   end
 
