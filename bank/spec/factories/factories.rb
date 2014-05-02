@@ -7,8 +7,8 @@ FactoryGirl.define do
   end
 
   factory :account do
-    title { Faker::Lorem.word}
-    balance { Faker::Number.decimal(4,2)}
+    title { Faker::Lorem.characters(10) }
+    balance { Faker::Number.decimal(4,2) }
     user
   end
 

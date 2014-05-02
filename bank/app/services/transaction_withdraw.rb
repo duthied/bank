@@ -12,8 +12,6 @@ class TransactionWithdraw
       # if so, update balance
       account.balance = new_balance
       account.save!
-      # => log transaction
-      # => Transactions::Log(user, account, before_balance, after_balance)
       TransactionResponse.new(true, new_balance)
     else
       TransactionResponse.new(false, current_balance, "Insufficient balance for that withdrawl.  Available balance: #{current_balance}")
