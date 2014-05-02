@@ -34,3 +34,17 @@ end
 
 gem 'thin', '~> 1.6.0'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'faker'
+
+group :development do
+end
+
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'byebug'
+  gem 'shoulda'
+end
+
+group :production do
+end
