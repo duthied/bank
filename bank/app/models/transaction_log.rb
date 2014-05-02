@@ -1,5 +1,21 @@
 # /app/models/transaction_log.rb
 class TransactionLog < ActiveRecord::Base
+
+  validates :user, presence: true
+  validates :account, presence: true
+  validates :before_balance, presence: true
+  validates :after_balance, presence: true
+
+  belongs_to :user
+  delegate  :card_number,
+            :pin,
+            to: :user, prefix: true, allow_nil: true
+
+  belongs_to :account
+  delegate  :balance,
+            :title,
+            to: :account, prefix: true, allow_nil: true
+
 end
 
 # == Schema Information
