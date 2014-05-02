@@ -1,5 +1,5 @@
-# /app/services/transactions/withdraw_transaction.rb
-class WithdrawTransaction
+# /app/services/transaction_withdraw.rb
+class TransactionWithdraw
 
   def self.call(account, amount)
 
@@ -10,11 +10,13 @@ class WithdrawTransaction
     if current_balance >= amount
       new_balance = current_balance - amount
       # if so, update balance
+      account.balance = new_balance
+      account.save!
       # => log transaction
       # => Transactions::Log(user, account, before_balance, after_balance)
-
+      true
     else
-      # raise ExceptionType, "Error Message"
+      false
     end
 
   end
