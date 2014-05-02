@@ -1,3 +1,4 @@
+# /app/models/admin_user.rb
 class AdminUser < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

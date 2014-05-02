@@ -1,3 +1,4 @@
+# /spec/models/account_spec.rb
 require 'spec_helper'
 
 describe Account do

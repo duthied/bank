@@ -1,3 +1,4 @@
+# /app/admin/account.rb
 ActiveAdmin.register Account do
 
   filter :title

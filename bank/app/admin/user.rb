@@ -1,3 +1,4 @@
+# /app/admin/user.rb
 ActiveAdmin.register User do
 
   filter :card_number
