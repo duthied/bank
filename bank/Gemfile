@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
@@ -44,8 +45,18 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'byebug'
   gem 'shoulda'
-  gem 'simplecov', '~> 0.7.1'
-  gem 'codeclimate-test-reporter'
+end
+
+group :test do
+  gem 'simplecov', '~> 0.7.1', :require => false
+  gem 'capybara'
+  gem 'database_cleaner', '1.0.1'
+  gem 'email_spec'
+  gem 'codeclimate-test-reporter', require: nil
+  gem 'capybara-webkit'
+  gem 'selenium-webdriver'
+  gem 'headless'
+  gem 'fakeredis'
 end
 
 group :production do
