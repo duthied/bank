@@ -5,7 +5,7 @@ Bank::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  post '/api/account/:id/withdraw', to: 'account#withdraw', as: 'account_withdraw'
-  get '/api/account/:id/balance', to: 'account#balance', as: 'account_balance'
+  post '/api/account/:id/withdraw', to: 'account#withdraw', as: 'account_withdraw', defaults: { format: 'json' }
+  get '/api/account/:id/balance', to: 'account#balance', as: 'account_balance', defaults: { format: 'json' }
 
 end
