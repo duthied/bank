@@ -84,3 +84,6 @@ Response:
 
 ### Audit Logging
 When a balance is changed on an account an audit log entry is created with a record of the Account, User, Balance before the transaction, the Balance after the transaction and a date stamp.  These audit logs are found in the Admin Interface in the Transaction Log menu item.
+
+### TODO
+Unit testing on the API requests don't exist - was having a hard time finding how to do the tests I want.
