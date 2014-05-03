@@ -39,7 +39,7 @@ ActiveAdmin.register Account do
     f.inputs 'Details' do
       f.input :title
       f.input :user_id
-      f.input :balance
+      # f.input :balance
     end
   end
 
