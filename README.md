@@ -25,11 +25,12 @@ rails server
 ```
 
 ### Interfaces
+
+#### Web-Client
 *****
 ##### Authentication
 The admin interface can be accessed by visiting the root of the site and providing a username of "admin@example.com" and a password of "password".
 
-#### Web-Client
 The only user-facing interface is provided by ActiveAdmin.  This interface provides CRUD access to the models:
 - Admin User
 - User
