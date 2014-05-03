@@ -25,6 +25,7 @@ rails server
 ```
 
 ### Interfaces
+*****
 #### Web-Client
 The only user-facing interface is provided by ActiveAdmin.  This interface provides CRUD access to the models:
 - Admin User
@@ -32,9 +33,15 @@ The only user-facing interface is provided by ActiveAdmin.  This interface provi
 - Account
 - Transaction Log
 
+##### Authentication
 The admin interface can be accessed by visiting the root of the site and providing a username of "admin@example.com" and a password of "password".
 
 #### API
+*****
+##### Authentication
+The API is protected via the presense of 2 headers in any API request:
+X-Card-Number and X-Pin - these values are validated in a filter on the AccountController.  If the CardNumber and Pin aren't valid, a 403 is returned from the API requests.
+
 ##### Withdraw: 
 A POST to `/api/account/{id}/withdraw` passing a param of 'amount'
 The response will be something like:
@@ -76,8 +83,3 @@ Response:
 
 ### Audit Logging
 When a balance is changed on an account an audit log entry is created with a record of the Account, User, Balance before the transaction, the Balance after the transaction and a date stamp.  These audit logs are found in the Admin Interface in the Transaction Log menu item.
-
-### Authentication
-The User Interface for the administrative actions is protected via a sign-in form (thanks ActiveAdmin)
-The API is protected via the presense of 2 headers in any API request:
-X-Card-Number and X-Pin - these values are validated in a filter on the AccountController.  If the CardNumber and Pin aren't valid, a 403 is returned from the API requests.
