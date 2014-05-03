@@ -7,6 +7,26 @@ describe Account do
   it { should ensure_length_of(:title).is_at_least(8).is_at_most(16) }
   it { should belong_to(:user) }
 
+  let(:user) { FactoryGirl.create(:user) }
+  let(:account) { FactoryGirl.create(:account, user: user, balance: 0) }
+  
+  describe 'should log balance change' do 
+    before do 
+      @audit_log_count_before = account.transaction_logs.count
+      @withdraw_amount = 10
+      @starting_balance = 100
+
+      account.balance = @starting_balance
+      account.save!
+    end
+
+    it "audit logs increase" do
+      expect(account.transaction_logs.count).to eq(@audit_log_count_before + 1)
+    end
+
+  end
+
+  
 end
 
 # == Schema Information

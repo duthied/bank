@@ -2,6 +2,7 @@
 class User < ActiveRecord::Base
 
   has_many :accounts, dependent: :destroy
+  has_many :transaction_logs, dependent: :destroy
   
   validates_uniqueness_of :card_number
   validates_length_of :card_number, :is => 9, :allow_blank => false

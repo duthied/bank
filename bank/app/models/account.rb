@@ -6,8 +6,30 @@ class Account < ActiveRecord::Base
             :pin,
             to: :user, prefix: true, allow_nil: true
             
+  has_many :transaction_logs, dependent: :destroy
+
   validates_length_of :title, in: 8..16, :allow_blank => false
   validates :user, presence: true
+
+  after_save :create_audit_record
+  after_initialize :set_starting_balance
+
+  private
+
+    def create_audit_record
+      if self.balance_changed?
+        # when account is created, balance can be nil
+        before_balance = self.balance_change[0] || 0
+        after_balance = self.balance_change[1]
+        TransactionAudit.call(self.user, self, before_balance, after_balance)
+      end
+    end
+
+    def set_starting_balance
+      if new_record?
+        self.balance ||= 0
+      end
+    end
 
 end
 
