@@ -16,12 +16,12 @@ describe Account do
       @withdraw_amount = 10
       @starting_balance = 100
 
-      @account.balance = @starting_balance
-      @account.save!
+      account.balance = @starting_balance
+      account.save!
     end
 
     it "audit logs increase" do
-      expect(@account.transaction_logs.count).to eq(@audit_log_count_before + 1)
+      expect(account.transaction_logs.count).to eq(@audit_log_count_before + 1)
     end
 
   end
