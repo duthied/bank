@@ -2,11 +2,8 @@
 class TransactionWithdraw
 
   def self.call(account, amount)
-
-    # get balance
     current_balance = account.balance
 
-    # enough balance for withdraw amount?
     if current_balance >= amount
       new_balance = current_balance - amount
       # if so, update balance
@@ -14,7 +11,7 @@ class TransactionWithdraw
       account.save!
       TransactionResponse.new(true, new_balance)
     else
-      TransactionResponse.new(false, current_balance, "Insufficient balance for that withdrawl.  Available balance: #{current_balance}")
+      TransactionResponse.new(false, current_balance, "Insufficient balance for this request.  Available balance: #{current_balance}")
     end
 
   end

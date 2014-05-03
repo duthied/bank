@@ -1,0 +1,8 @@
+<h3>Account#withdraw</h3>
+<p>Account: <%= @account.title %></p>
+<p>Amount of withdraw request: <%= @amount %></p>
+<hr/>
+<h3>Response:</h3>
+<p>Current balance: <%= @response.balance %></p>
+<p>Success? <%= @response.success? ? 'request successful' : 'request denied' %></p>
+<p>Error <%= @response.error ? @response.error : 'none' %></p>
