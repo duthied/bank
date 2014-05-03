@@ -7,5 +7,6 @@ Bank::Application.routes.draw do
 
   post '/api/account/:id/withdraw', to: 'account#withdraw', as: 'account_withdraw', defaults: { format: 'json' }
   get '/api/account/:id/balance', to: 'account#balance', as: 'account_balance', defaults: { format: 'json' }
-
+  get '/api/user', to: 'user#show', as: 'user_show', defaults: { format: 'json' }
+  
 end
