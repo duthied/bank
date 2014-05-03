@@ -1,20 +1,33 @@
 class AccountController < ApplicationController
   skip_before_filter  :verify_authenticity_token
+  before_filter :auth_user_from_headers
 
   def withdraw
-    account = find_account(params[:id])
+    account = find_account(@user, params[:id])
     amount = params[:amount].to_f
+    
     @response = TransactionWithdraw.call(account, amount)
   end
 
   def balance
-    @account = find_account(params[:id])
+    @account = find_account(@user, params[:id])
   end
 
   private
 
-    def find_account(id)
-      Account.find(id)
+    def not_found
+      render :status => 404, :text => 'Not Found'
+    end
+
+    def find_account(user, id)
+      user.accounts.find_by_id(params[:id]) || not_found
+    end
+
+    def auth_user_from_headers
+      @user = User.find_by_card_number_and_pin(request.headers['X-Card-Number'], request.headers['X-Pin'])
+      if @user.nil?
+        render :status => 403, :text => 'Forbidden'
+      end
     end
 
 end
