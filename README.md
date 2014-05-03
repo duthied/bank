@@ -78,4 +78,6 @@ Response:
 When a balance is changed on an account an audit log entry is created with a record of the Account, User, Balance before the transaction, the Balance after the transaction and a date stamp.  These audit logs are found in the Admin Interface in the Transaction Log menu item.
 
 ### Authentication
-TBD
+The User Interface for the administrative actions is protected via a sign-in form (thanks ActiveAdmin)
+The API is protected via the presense of 2 headers in any API request:
+X-Card-Number and X-Pin - these values are validated in a filter on the AccountController.  If the CardNumber and Pin aren't valid, a 403 is returned from the API requests.
