@@ -8,7 +8,7 @@ class Account < ActiveRecord::Base
             
   has_many :transaction_logs, dependent: :destroy
 
-  validates_length_of :title, in: 8..16, :allow_blank => false
+  validates_length_of :title, in: 6..16, :allow_blank => false
   validates :user, presence: true
 
   after_save :create_audit_record
