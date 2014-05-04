@@ -13,6 +13,16 @@ class AccountController < ApplicationController
     @account = find_account(@user, params[:id])
   end
 
+  def show
+    # logger.debug("in show => params id:#{params[:id]}, user:#{@user.id}")
+    @account = find_account(@user, params[:id])
+    # logger.debug("account:#{@account.title}")
+  end
+
+  def index
+    @accounts = find_accounts(@user)
+  end
+
   private
 
     def not_found
@@ -20,7 +30,12 @@ class AccountController < ApplicationController
     end
 
     def find_account(user, id)
-      user.accounts.find_by_id(params[:id]) || not_found
+      # logger.debug("in find_account => params user:#{user.id}, id:#{id}")
+      user.accounts.find_by_id(id) || not_found
+    end
+
+    def find_accounts(user)
+      user.accounts || not_found
     end
 
     def auth_user_from_headers

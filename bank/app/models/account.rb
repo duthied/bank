@@ -1,6 +1,8 @@
 # /app/models/account.rb
 class Account < ActiveRecord::Base
 
+  include Rails.application.routes.url_helpers
+
   belongs_to :user
   delegate  :card_number,
             :pin,
@@ -13,6 +15,11 @@ class Account < ActiveRecord::Base
 
   after_save :create_audit_record
   after_initialize :set_starting_balance
+
+  def links
+    links = Array.new
+    links << RelLink.new("self", account_show_path(self.id))
+  end
 
   private
 

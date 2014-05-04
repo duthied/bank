@@ -5,8 +5,11 @@ Bank::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  post '/api/account/:id/withdraw', to: 'account#withdraw', as: 'account_withdraw', defaults: { format: 'json' }
-  get '/api/account/:id/balance', to: 'account#balance', as: 'account_balance', defaults: { format: 'json' }
+  get '/api/accounts', to: 'account#index', as: 'accounts_index', defaults: { format: 'json' }
+  get '/api/accounts/:id', to: 'account#show', as: 'account_show', defaults: { format: 'json' }
+  
+  post '/api/accounts/:id/withdraw', to: 'account#withdraw', as: 'account_withdraw', defaults: { format: 'json' }
+  get '/api/accounts/:id/balance', to: 'account#balance', as: 'account_balance', defaults: { format: 'json' }
   get '/api/user', to: 'user#show', as: 'user_show', defaults: { format: 'json' }
   
 end
