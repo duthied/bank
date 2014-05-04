@@ -19,6 +19,8 @@ class Account < ActiveRecord::Base
   def links
     links = Array.new
     links << RelLink.new("self", account_show_path(self.id))
+    links << RelLink.new("withdraw", account_withdraw_path(self.id))
+    links << RelLink.new("balance", account_balance_path(self.id))
   end
 
   private
