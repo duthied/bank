@@ -14,9 +14,7 @@ class AccountController < ApplicationController
   end
 
   def show
-    # logger.debug("in show => params id:#{params[:id]}, user:#{@user.id}")
     @account = find_account(@user, params[:id])
-    # logger.debug("account:#{@account.title}")
   end
 
   def index
@@ -30,7 +28,6 @@ class AccountController < ApplicationController
     end
 
     def find_account(user, id)
-      # logger.debug("in find_account => params user:#{user.id}, id:#{id}")
       user.accounts.find_by_id(id) || not_found
     end
 
