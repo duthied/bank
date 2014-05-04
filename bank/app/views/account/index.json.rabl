@@ -1,2 +1,2 @@
 collection @accounts
-attributes :title, :balance, :links
+attributes :id, :title, :balance, :links

@@ -1,2 +1,2 @@
 object @account
-attributes :title, :balance, :links
+attributes :id, :title, :balance, :links
