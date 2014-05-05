@@ -43,6 +43,82 @@ The only user-facing interface is provided by ActiveAdmin.  This interface provi
 The API is protected via the presense of 2 headers in any API request:
 X-Card-Number and X-Pin - these values are validated in a filter on the AccountController.  If the CardNumber and Pin aren't valid, a 403 is returned from the API requests.
 
+##### User:
+A GET to /api/user with a valid X-Card-Number and X-Pin will return the user's information with rel links in addition to any accounts that the user has, also with rel links for 'self', 'withdraw' and 'balance'
+```
+{
+  card_number: "123123123"
+  pin: "1234"
+  links: [{
+    type: "self"
+    uri: http://localhost:3000/api/user
+  }]
+  accounts: 
+  [{
+    id: 1
+    title: "Checking"
+    balance: "8789.87"
+    links: [{
+      type: "self"
+      uri: http://localhost:3000/api/accounts/1
+    }{
+      type: "withdraw"
+      uri: http://localhost:3000/api/accounts/1/withdraw
+    }{
+      type: "balance"
+      uri: http://localhost:3000/api/accounts/1/balance
+    }]
+   }{
+    id: 5
+    title: "Tax Free Savings"
+    balance: "0.0"
+    links: [{
+      type: "self"
+      uri: http://localhost:3000/api/accounts/5
+    }{
+      type: "withdraw"
+      uri: http://localhost:3000/api/accounts/5/withdraw
+    }{
+      type: "balance"
+      uri: http://localhost:3000/api/accounts/5/balance
+    }]
+  }]
+}
+```
+##### Accounts:
+A GET to /api/accounts/{:id} (a rel 'self' link in the above results) returns the following:
+```
+[{
+  id: 1
+  title: "Checking"
+  balance: "8789.87"
+  links: [{
+    type: "self"
+    uri: http://localhost:3000/api/accounts/1
+  }{
+    type: "withdraw"
+    uri: http://localhost:3000/api/accounts/1/withdraw
+  }{
+    type: "balance"
+    uri: http://localhost:3000/api/accounts/1/balance
+  }]
+}{
+  id: 5
+  title: "Tax Free Savings"
+  balance: "0.0"
+  links: [{
+    type: "self"
+    uri: http://localhost:3000/api/accounts/5
+  }{
+    type: "withdraw"
+    uri: http://localhost:3000/api/accounts/5/withdraw
+  }{
+    type: "balance"
+    uri: http://localhost:3000/api/accounts/5/balance
+  }]
+}]
+```
+
 ##### Withdraw: 
 A POST to `/api/account/{id}/withdraw` passing a param of 'amount'
 The response will be something like:
