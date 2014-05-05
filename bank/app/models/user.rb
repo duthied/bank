@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   def links
     links = Array.new
-    links << RelLink.new("self", user_show_path())
+    links << RelLink.new("self", user_show_url())
   end
 
 end
