@@ -10,7 +10,7 @@ describe RelLink do
 
   it { should respond_to(:type, :uri) }
 
-  it 'should report the rel corretly' do
+  it 'should report the rel correctly' do
     expect(subject.type).to eq(@uri)
   end
 
