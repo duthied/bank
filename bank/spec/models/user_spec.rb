@@ -10,6 +10,11 @@ describe User do
   it { should respond_to(:pin) }
   it { should ensure_length_of(:pin).is_equal_to(4) }
 
+  it { should respond_to(:links) }
+
+  it { should have_many(:accounts) }
+  it { should have_many(:transaction_logs) }
+
 end
 
 # == Schema Information
