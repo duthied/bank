@@ -4,9 +4,12 @@ require 'spec_helper'
 describe Account do
 
   it { should respond_to(:title) }
+  it { should validate_presence_of(:user) }
+  
   it { should ensure_length_of(:title).is_at_least(6).is_at_most(16) }
   it { should belong_to(:user) }
-
+  it { should have_many(:transaction_logs) }
+  
   let(:user) { FactoryGirl.create(:user) }
   let(:account) { FactoryGirl.create(:account, user: user, balance: 0) }
   

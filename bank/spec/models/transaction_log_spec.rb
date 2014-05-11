@@ -5,9 +5,12 @@ describe TransactionLog do
 
   it { should respond_to(:before_balance) }
   it { should respond_to(:after_balance) }
+
+  
+  
   it { should belong_to(:user) }
   it { should belong_to(:account) }
-  
+
 end
 
 # == Schema Information
