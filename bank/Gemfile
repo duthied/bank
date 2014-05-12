@@ -39,6 +39,7 @@ gem 'faker'
 gem 'rabl'
 
 group :development do
+  gem 'rubocop'
 end
 
 group :development, :test do

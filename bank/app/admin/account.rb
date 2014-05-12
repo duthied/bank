@@ -5,12 +5,12 @@ ActiveAdmin.register Account do
 
   index do
     selectable_column
-    column :title, :sortable => :title
-    column 'Belongs To Card', :user, :sortable => 'users.card_number' do |account|
+    column :title, sortable: :title
+    column 'Belongs To Card', :user, sortable: 'users.card_number' do |account|
       link_to account.user_card_number, admin_user_path(account.user)
     end
-    column 'Balance', :sortable => :balance do |account|
-      number_to_currency(account.balance, :unit => "$")
+    column 'Balance', sortable: :balance do |account|
+      number_to_currency(account.balance, unit: '$')
     end
     column 'Date Created', :created_at
     column 'Date Updated', :updated_at
@@ -27,7 +27,7 @@ ActiveAdmin.register Account do
         link_to @account.user_card_number, admin_user_path(@account.user)
       end
       row 'Balance' do
-        number_to_currency(@account.balance, :unit => "$")
+        number_to_currency(@account.balance, unit: '$')
       end
       row :created_at
       row :updated_at
