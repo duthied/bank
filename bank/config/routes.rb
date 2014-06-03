@@ -1,10 +1,21 @@
 Bank::Application.routes.draw do
 
   # root to: 'admin/dashboard#index'
-  root to: 'login#index'
+  root to: 'account#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+  devise_for :users,
+             path_names:
+             {
+               sign_in: 'login',
+               sign_out: 'logout'
+             },
+             controllers:
+             {
+               registrations: 'registrations'
+             }
 
   get '/accounts',
       to: 'account#index',

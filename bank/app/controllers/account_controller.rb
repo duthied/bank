@@ -1,7 +1,7 @@
 # Account Controller
 class AccountController < ApplicationController
   skip_before_filter :verify_authenticity_token
-  before_filter :auth_user_from_headers
+  before_action :authenticate_user!
 
   def withdraw
     account = find_account(@user, params[:id])
