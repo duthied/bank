@@ -1,0 +1,33 @@
+<div class="row" style="margin-top:100px;">
+
+  <div class="col-md-4 center">
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+          <a class="close" data-dismiss="alert">&#215;</a>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  
+  <div class="col-md-4 center well">
+    <h4>Account: <%= @account['title'] %></h4>
+    <div>Balance: <%= number_to_currency(@account['balance'], :unit => "$") %></div>
+  
+    <%= form_tag "/accounts/#{@account['id']}/withdraw", method: :post do %>
+      <div class="center">
+        <%= hidden_field_tag 'endpoint', @withdraw_uri %>
+        <%= text_field_tag "amount", nil, placeholder: "enter amount", class: "form-control" %><br/>
+        <%= submit_tag "Withdraw", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-md-4 center">
+    <div>
+      <%= link_to '<< account listing', account_index_path %>
+    </div>
+  </div>
+
+</div>

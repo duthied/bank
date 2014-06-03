@@ -1,0 +1,27 @@
+<div class="row" style="margin-top:100px;">
+
+  <div class="col-md-4 center">
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+          <a class="close" data-dismiss="alert">&#215;</a>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  
+  <div class="col-md-4 center well">
+    <h4>Select an Account</h4>
+    <% @accounts.each do |account| %>
+      <div><%= link_to "#{account['title']} - #{number_to_currency(account['balance'], :unit => '$')}", account_show_path(account['id']) %></div>
+    <% end %>
+  </div>
+  
+  <div class="col-md-4 center">
+  </div>
+
+  <div class="col-md-4 center"></div>
+
+</div>
+

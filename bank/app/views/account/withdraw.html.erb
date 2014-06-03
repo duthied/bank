@@ -1,0 +1,14 @@
+<div class="row" style="margin-top:100px;">
+  
+  <div class="col-md-4 center well">
+    <h4>Results: <%= @result %></h4>
+    <div>Balance: <%= number_to_currency(@balance, :unit => "$") %></div>
+  </div>
+
+  <div class="col-md-4 center">
+    <div>
+      <%= link_to '<< account listing', account_index_path %>
+    </div>
+  </div>
+
+</div>
