@@ -5,7 +5,7 @@ ruby '2.0.0'
 gem 'rails', '4.0.4'
 
 # Use postgres as the database for Active Record
-gem 'pg'
+gem 'mysql2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -51,12 +51,12 @@ end
 
 group :test do
   gem 'simplecov', '~> 0.7.1', :require => false
-  gem 'database_cleaner', '1.0.1'
+  # gem 'database_cleaner', '1.0.1'
   gem 'codeclimate-test-reporter', require: nil
-  gem 'capybara'
-  gem 'capybara-webkit'
-  gem 'selenium-webdriver'
-  gem 'headless'
+  # gem 'capybara'
+  # gem 'capybara-webkit'
+  # gem 'selenium-webdriver'
+  # gem 'headless'
   gem 'mocha'
 end
 
