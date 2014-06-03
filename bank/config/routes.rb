@@ -1,23 +1,22 @@
 Bank::Application.routes.draw do
 
   # root to: 'admin/dashboard#index'
+  root to: 'login#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  root to: 'login#index'
-
   get '/accounts',
       to: 'account#index',
-      as: 'account_index'
+      as: 'account_index_web'
 
   get '/accounts/:id',
       to: 'account#show',
-      as: 'account_show'
+      as: 'account_show_web'
 
   post '/accounts/:id/withdraw',
        to: 'account#withdraw',
-       as: 'account_withdraw'
+       as: 'account_withdraw_web'
 
   # API routes
   get '/api/accounts',

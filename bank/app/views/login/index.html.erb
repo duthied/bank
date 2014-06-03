@@ -16,18 +16,7 @@
     <h4>Please Login</h4>
   </div>
   
-  <%= form_tag "/authenticate", method: :post do %>
-    <div class="col-md-4 center">
-      <%= text_field_tag "card_number", nil, placeholder: "enter your card number", maxlength: 9, class: "form-control" %>
-    </div>
-    <div class="col-md-4 center">
-      <%= text_field_tag "pin", nil, placeholder: "enter your 4 digit pin", maxlength: 4, class: "form-control" %>
-    </div>
-    <div class="col-md-4 center">
-      <%= submit_tag "Login", class: "btn btn-primary" %>
-    </div>
-  <% end %>
-
+  
   <div class="col-md-4 center"></div>
 
 </div>

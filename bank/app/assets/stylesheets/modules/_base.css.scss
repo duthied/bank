@@ -1,0 +1,35 @@
+/** TODO: the headers are currently broken down by prestation content rather than by role
+  * Should be selected by class and have h-level determined by hgroup position
+  * BEZ
+  */
+
+* {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+div {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+html {
+}
+
+a,
+a:link,
+a:visited {
+}
+
+h1 {
+  font-size:30px;
+  font-weight: normal;
+  margin:0;
+  display: inline-block;
+  color: inherit;
+}
+
+.center {
+  text-align: center;
+}
